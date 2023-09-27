@@ -1,4 +1,4 @@
-module lalala
+module go-fab
 
 go 1.20
 

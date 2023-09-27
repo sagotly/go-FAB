@@ -1,7 +1,7 @@
 package main
 
 import (
-	"lalala/handlers"
+	"go-fab/handlers"
 
 	"github.com/gin-gonic/gin"
 )

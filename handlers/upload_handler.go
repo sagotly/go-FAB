@@ -2,10 +2,10 @@ package handlers
 
 import (
 	"fmt"
+	"go-fab/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func UploadHandler(c *gin.Context) {
@@ -19,14 +19,9 @@ func UploadHandler(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-
-		fileName := fmt.Sprintf("%s.txt", uuid.New().String())
-		fullPath := "C:\\Users\\User\\Desktop\\go-fab\\data\\" + fileName
-
-		err = c.SaveUploadedFile(file, fullPath)
+		err = c.SaveUploadedFile(file, utils.GenerateUniqueFileName(file.Filename))
 		if err != nil {
-			fmt.Printf("error has accured:")
-			fmt.Print(err)
+			fmt.Printf("error has accured:%s", err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
