@@ -19,6 +19,7 @@ func UploadHandler(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
+		fmt.Print(file.Filename)
 		err = c.SaveUploadedFile(file, utils.GenerateUniqueFileName(file.Filename))
 		if err != nil {
 			fmt.Printf("error has accured:%s", err)
