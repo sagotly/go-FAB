@@ -21,7 +21,7 @@ func UploadHandler(c *gin.Context) {
 		}
 
 		fileName := fmt.Sprintf("%s.txt", uuid.New().String())
-		fullPath := "C:\\Users\\User\\Desktop\\lalala\\data\\" + fileName
+		fullPath := "C:\\Users\\User\\Desktop\\go-fab\\data\\" + fileName
 
 		err = c.SaveUploadedFile(file, fullPath)
 		if err != nil {
